@@ -14,7 +14,7 @@ namespace Entropy.Assets.Code {
 		}
 
 		protected void Move(Vector3 direction){
-			transform.Translate(direction.normalized * _speed * Time.deltaTime);
+			transform.Translate(direction.normalized * _speed * Time.deltaTime, Space.World);
 		}
 
 	}
