@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Entropy.Assets.Code {
+namespace Entropy.Assets.Code.Base {
 	abstract class AttackBase : MonoBehaviour {
 
 		[SerializeField]

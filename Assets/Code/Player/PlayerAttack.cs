@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Entropy.Assets.Code.Base;
 using UnityEngine;
 
-namespace Entropy.Assets.Code {
+namespace Entropy.Assets.Code.Player {
 	class PlayerAttack : AttackBase {
 
 		[SerializeField]

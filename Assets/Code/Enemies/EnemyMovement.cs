@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Entropy.Assets.Code.Base;
 using UnityEngine;
 
-namespace Entropy.Assets.Code {
+namespace Entropy.Assets.Code.Enemies {
 	class EnemyMovement : MovementBase {
 
 		private Vector3 _direction;

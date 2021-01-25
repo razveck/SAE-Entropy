@@ -3,14 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Entropy.Assets.Code {
-	class ProjectileMovement : MovementBase {
-		private void Start() {
-
-		}
+namespace Entropy.Assets.Code.Player {
+	class PlayerMarker : MonoBehaviour {
 
 		private void Update() {
-			Move(transform.right);
+
 		}
 
 	}
