@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Entropy.Assets.Code.Items;
 using UnityEngine;
 
 namespace Entropy.Assets.Code.Base {
 	abstract class AttackBase : MonoBehaviour {
 
 		[SerializeField]
-		protected GameObject _weapon;
+		protected Weapon _weapon;
 
 		private void Start() {
 

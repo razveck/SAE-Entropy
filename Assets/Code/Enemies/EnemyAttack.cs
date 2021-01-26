@@ -8,13 +8,6 @@ using UnityEngine;
 
 namespace Entropy.Assets.Code.Enemies {
 	class EnemyAttack : AttackBase {
-
-
-		private float _shootTimer;
-
-		[SerializeField]
-		private float _shootCooldown = 1;
-
 		[SerializeField]
 		private GameObject _bulletPrefab;
 
@@ -38,13 +31,8 @@ namespace Entropy.Assets.Code.Enemies {
 		}
 
 		protected override void Shoot() {
-			_shootTimer += Time.deltaTime;
-
-			if(_shootTimer >= _shootCooldown){
-				_shootTimer -= _shootCooldown;
-
-				Instantiate(_bulletPrefab, _weapon.transform.position, _weapon.transform.rotation);
-			}
+			_weapon.Reload();
+			_weapon.Attack();
 		}
 	}
 }

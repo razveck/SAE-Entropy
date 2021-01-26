@@ -2,19 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using Entropy.Assets.Code.Base;
+using Entropy.Assets.Code.Items;
 using UnityEngine;
 
 namespace Entropy.Assets.Code.Player {
 	class PlayerAttack : AttackBase {
 
 		[SerializeField]
-		private Camera _sceneCamera;
+		private Camera _sceneCamera = default;
 
 		[SerializeField]
-		private GameObject _bulletPrefab;
-
-		public Vector3 MousePos;
-		public Vector3 MouseWorld;
+		private List<Weapon> _weaponsList;
 
 		private void Start() {
 
@@ -23,13 +21,39 @@ namespace Entropy.Assets.Code.Player {
 		protected override void Update() {
 			base.Update();
 
-			MousePos = Input.mousePosition;
+			if(Input.GetKeyDown(KeyCode.R)) {
+				_weapon.Reload();
+			}
 
+			if(Input.GetKeyDown(KeyCode.Alpha1)) {
+				ChangeWeapon(0);
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha2)) {
+				ChangeWeapon(1);
+			}
+			if(Input.GetKeyDown(KeyCode.Alpha3)){
+				ChangeWeapon(2);
+			}
+
+		}
+
+		private void ChangeWeapon(int newWeapon) {
+			if(_weaponsList.Count <= newWeapon)
+				return;
+
+			for(int i = 0; i < _weaponsList.Count; i++) {
+				_weaponsList[i].gameObject.SetActive(false);
+			}
+
+			//change the current weapon
+			_weapon = _weaponsList[newWeapon];
+
+			//enable the current weapon
+			_weapon.gameObject.SetActive(true);
 		}
 
 		protected override void Aim() {
 			Vector3 mouseWorldSpace = _sceneCamera.ScreenToWorldPoint(Input.mousePosition);
-			MouseWorld = mouseWorldSpace;
 
 			Vector3 direction = mouseWorldSpace - transform.position;
 
@@ -46,8 +70,8 @@ namespace Entropy.Assets.Code.Player {
 		}
 
 		protected override void Shoot() {
-			if(Input.GetMouseButtonDown(0)){
-				Instantiate(_bulletPrefab, _weapon.transform.position, _weapon.transform.rotation);
+			if(Input.GetMouseButtonDown(0)) {
+				_weapon.Attack();
 			}
 		}
 
