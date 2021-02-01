@@ -13,6 +13,13 @@ namespace Entropy.Assets.Code.Items {
 		[SerializeField]
 		private int _ammo = 100;
 
+		public int Ammo
+		{
+			get { return _ammo; }
+			set { _ammo = value; }
+		}
+
+
 		//fire rate
 		[SerializeField]
 		private float _attackCooldown = 0.5f;
@@ -46,8 +53,17 @@ namespace Entropy.Assets.Code.Items {
 		}
 
 		public void Attack() {
-			if(_currentMagazine <= 0 || _attackTimer < _attackCooldown)
+			if(_attackTimer < _attackCooldown)
 				return;
+
+			if(_currentMagazine <= 0){
+				Reload();
+			}
+
+			//if ammo was 0, the magazine is still empty
+			if(_currentMagazine <= 0){
+				return; 
+			}
 
 			for(int i = 0; i < _projectileAmount; i++) {
 				float angle = Random.Range(-_spreadAngle, _spreadAngle);
@@ -62,7 +78,7 @@ namespace Entropy.Assets.Code.Items {
 		}
 
 		public void Reload() {
-			if(_ammo >= 0) {
+			if(_ammo > 0) {
 				_currentMagazine = Mathf.Clamp(_maxMagazine, 0, _ammo);
 				_ammo -= _currentMagazine;
 			}

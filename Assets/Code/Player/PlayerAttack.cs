@@ -25,14 +25,20 @@ namespace Entropy.Assets.Code.Player {
 				_weapon.Reload();
 			}
 
-			if(Input.GetKeyDown(KeyCode.Alpha1)) {
-				ChangeWeapon(0);
-			}
-			if(Input.GetKeyDown(KeyCode.Alpha2)) {
-				ChangeWeapon(1);
-			}
-			if(Input.GetKeyDown(KeyCode.Alpha3)){
-				ChangeWeapon(2);
+			//if(Input.GetKeyDown(KeyCode.Alpha1)) {
+			//	ChangeWeapon(0);
+			//}
+			//if(Input.GetKeyDown(KeyCode.Alpha2)) {
+			//	ChangeWeapon(1);
+			//}
+			//if(Input.GetKeyDown(KeyCode.Alpha3)) {
+			//	ChangeWeapon(2);
+			//}
+
+			for(int i = 0; i < _weaponsList.Count; i++) {
+				if(Input.GetKeyDown((KeyCode)49 + i)) {
+					ChangeWeapon(i);
+				}
 			}
 
 		}

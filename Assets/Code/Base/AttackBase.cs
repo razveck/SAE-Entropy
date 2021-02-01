@@ -10,6 +10,17 @@ namespace Entropy.Assets.Code.Base {
 		[SerializeField]
 		protected Weapon _weapon;
 
+		//public Weapon Weapon
+		//{
+		//	get
+		//	{
+		//		return _weapon;
+		//	}
+		//}
+
+		//same as the above property
+		public Weapon Weapon => _weapon;
+
 		private void Start() {
 
 		}

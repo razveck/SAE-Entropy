@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 100
   _maxHealth: 100
+  _loot: {fileID: 2748885653371003258, guid: daf47f7904b4a714c899fc77db0eeb99, type: 3}
 --- !u!1 &7685525519403848807
 GameObject:
   m_ObjectHideFlags: 0

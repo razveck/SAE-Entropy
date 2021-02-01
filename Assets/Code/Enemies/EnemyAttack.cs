@@ -31,7 +31,6 @@ namespace Entropy.Assets.Code.Enemies {
 		}
 
 		protected override void Shoot() {
-			_weapon.Reload();
 			_weapon.Attack();
 		}
 	}
