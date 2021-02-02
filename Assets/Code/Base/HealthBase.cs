@@ -11,12 +11,18 @@ namespace Entropy.Assets.Code.Base {
 		[SerializeField]
 		protected int _maxHealth = 100;
 
+		public int MaxHealth => _maxHealth;
+
+		public event Action<int> HealthChanged;
+
 		private void Start() {
 			_currentHealth = _maxHealth;
 		}
 
 		public virtual void DealDamage(int damage){
 			_currentHealth -= damage;
+
+			HealthChanged?.Invoke(_currentHealth);
 
 			if(_currentHealth <= 0)
 				Die();

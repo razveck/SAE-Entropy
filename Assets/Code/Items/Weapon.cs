@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,8 +17,13 @@ namespace Entropy.Assets.Code.Items {
 		public int Ammo
 		{
 			get { return _ammo; }
-			set { _ammo = value; }
+			set { 
+				_ammo = value; 
+				AmmoChanged?.Invoke(value);
+			}
 		}
+
+		public event Action<int> AmmoChanged;
 
 
 		//fire rate
@@ -66,7 +72,7 @@ namespace Entropy.Assets.Code.Items {
 			}
 
 			for(int i = 0; i < _projectileAmount; i++) {
-				float angle = Random.Range(-_spreadAngle, _spreadAngle);
+				float angle = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
 
 				Instantiate(_projectilePrefab, _spawnPoint.position, transform.rotation * Quaternion.Euler(0, 0, angle));
 			}
@@ -78,9 +84,9 @@ namespace Entropy.Assets.Code.Items {
 		}
 
 		public void Reload() {
-			if(_ammo > 0) {
-				_currentMagazine = Mathf.Clamp(_maxMagazine, 0, _ammo);
-				_ammo -= _currentMagazine;
+			if(Ammo > 0) {
+				_currentMagazine = Mathf.Clamp(_maxMagazine, 0, Ammo);
+				Ammo -= _currentMagazine;
 			}
 		}
 

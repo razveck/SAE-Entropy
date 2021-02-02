@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857628117114932378, guid: 80eb666ab1dc3ef4fa59908e6c2716cd, type: 3}
       propertyPath: _currentMagazine
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5857628117114932378, guid: 80eb666ab1dc3ef4fa59908e6c2716cd, type: 3}
       propertyPath: _maxMagazine
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5857628117114932378, guid: 80eb666ab1dc3ef4fa59908e6c2716cd, type: 3}
       propertyPath: _ammo

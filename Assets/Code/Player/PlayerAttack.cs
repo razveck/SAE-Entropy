@@ -14,10 +14,6 @@ namespace Entropy.Assets.Code.Player {
 		[SerializeField]
 		private List<Weapon> _weaponsList;
 
-		private void Start() {
-
-		}
-
 		protected override void Update() {
 			base.Update();
 
@@ -43,7 +39,7 @@ namespace Entropy.Assets.Code.Player {
 
 		}
 
-		private void ChangeWeapon(int newWeapon) {
+		protected override void ChangeWeapon(int newWeapon) {
 			if(_weaponsList.Count <= newWeapon)
 				return;
 
@@ -56,6 +52,8 @@ namespace Entropy.Assets.Code.Player {
 
 			//enable the current weapon
 			_weapon.gameObject.SetActive(true);
+
+			base.ChangeWeapon(newWeapon);
 		}
 
 		protected override void Aim() {
