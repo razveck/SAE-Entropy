@@ -11,9 +11,11 @@ namespace Entropy.Assets.Code.Enemies {
 		private GameObject _loot;
 
 		protected override void Die() {
-			Instantiate(_loot, transform.position, Quaternion.identity);
+			var obj = ObjectPool.Instance.Request(_loot);
+			obj.transform.position = transform.position;
+			obj.transform.rotation = Quaternion.identity;
 
-			Destroy(gameObject);
+			ObjectPool.Instance.Return(gameObject);
 		}
 
 	}

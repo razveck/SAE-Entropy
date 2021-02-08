@@ -74,7 +74,17 @@ namespace Entropy.Assets.Code.Items {
 			for(int i = 0; i < _projectileAmount; i++) {
 				float angle = UnityEngine.Random.Range(-_spreadAngle, _spreadAngle);
 
-				Instantiate(_projectilePrefab, _spawnPoint.position, transform.rotation * Quaternion.Euler(0, 0, angle));
+				try{
+					var obj = ObjectPool.Instance.Request(_projectilePrefab);
+					obj.transform.position = _spawnPoint.position;
+					obj.transform.rotation = transform.rotation * Quaternion.Euler(0, 0, angle);
+				}
+				catch(KeyNotFoundException e){
+					//react to there not being an object pool
+					//enabled = false;	
+					Debug.LogError(e);
+
+				}
 			}
 
 

@@ -23,7 +23,7 @@ namespace Entropy.Assets.Code.Projectiles {
 			}
 
 			//destroy the bullet
-			Destroy(gameObject);
+			ObjectPool.Instance.Return(gameObject);
 		}
 
 	}

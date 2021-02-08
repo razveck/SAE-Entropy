@@ -19,7 +19,7 @@ namespace Entropy.Assets.Code.Items {
 			if(collision.TryGetComponent(out PlayerMarker player)){
 				Pick(player);
 
-				Destroy(gameObject);
+				ObjectPool.Instance.Return(gameObject);
 			}
 		}
 

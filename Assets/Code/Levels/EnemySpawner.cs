@@ -18,7 +18,9 @@ namespace Entropy.Assets.Code.Levels {
 			while(true) {
 				Vector3 spawnPos = _spawnPoints[ Random.Range(0, _spawnPoints.Count) ].position;
 
-				Instantiate(_enemyPrefab, spawnPos, Quaternion.identity);
+				var obj = ObjectPool.Instance.Request(_enemyPrefab);
+				obj.transform.position = spawnPos;
+				obj.transform.rotation = Quaternion.identity;
 
 				yield return new WaitForSeconds(_delay);
 			}
