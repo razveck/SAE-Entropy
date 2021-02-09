@@ -1,22 +1,39 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Entropy.Assets.Code {
-	class ObjectPool : MonoBehaviour {
 
+	class ObjectPool : MonoBehaviour{
 		//dictionary serialization in unity
-
+		
 		//hashmap, hashtable, map
 		/// <summary>
 		/// Key: prefab,
 		/// Value: list of instances of that prefab
 		/// </summary>
 		private Dictionary<GameObject, List<GameObject>> _objects;
+		
+		//[Serializable]
+		//class PoolList{
+		//	public GameObject Prefab;
+		//	public List<GameObject> Pool;
+		//}
+		//[SerializeField]
+		//private List<PoolList> _poolList;
+
+		[Serializable]
+		class PrefabCount{
+			public GameObject Prefab;
+			public int Count;
+		}
+
 
 		[SerializeField]
-		private List<GameObject> _prefabs;
+		private List<PrefabCount> _prefabs;
 
 		private static ObjectPool _instance;
 		public static ObjectPool Instance => _instance;
@@ -28,7 +45,6 @@ namespace Entropy.Assets.Code {
 			} else {
 				Destroy(this);
 			}
-
 		}
 
 
@@ -59,14 +75,14 @@ namespace Entropy.Assets.Code {
 			foreach(var prefab in _prefabs) {
 				var list = new List<GameObject>();
 
-				for(int i = 0; i < 10; i++) {
-					var obj = Instantiate(prefab);
+				for(int i = 0; i < prefab.Count; i++) {
+					var obj = Instantiate(prefab.Prefab);
 					list.Add(obj);
 					obj.SetActive(false);
-					obj.AddComponent<PooledObject>().Prefab = prefab;
+					obj.AddComponent<PooledObject>().Prefab = prefab.Prefab;
 				}
 
-				_objects.Add(prefab, list);
+				_objects.Add(prefab.Prefab, list);
 			}
 		}
 

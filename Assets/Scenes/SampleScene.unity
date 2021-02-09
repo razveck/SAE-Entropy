@@ -2127,6 +2127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052681583}
   - component: {fileID: 2052681582}
+  - component: {fileID: 2052681584}
   m_Layer: 0
   m_Name: ObjectPool
   m_TagString: Untagged
@@ -2147,9 +2148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs:
-  - {fileID: 715968562685390444, guid: 9b172009c6128fe4f811ac2bc9eedc65, type: 3}
-  - {fileID: 2748885653371003258, guid: daf47f7904b4a714c899fc77db0eeb99, type: 3}
-  - {fileID: 3345483185033254384, guid: f5d2a72c5941da444a9f6453d0b86794, type: 3}
+  - Prefab: {fileID: 3345483185033254384, guid: f5d2a72c5941da444a9f6453d0b86794, type: 3}
+    Count: 100
+  - Prefab: {fileID: 715968562685390444, guid: 9b172009c6128fe4f811ac2bc9eedc65, type: 3}
+    Count: 20
+  - Prefab: {fileID: 2748885653371003258, guid: daf47f7904b4a714c899fc77db0eeb99, type: 3}
+    Count: 20
 --- !u!4 &2052681583
 Transform:
   m_ObjectHideFlags: 0
@@ -2164,6 +2168,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2052681584
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052681581}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2125018473
 GameObject:
   m_ObjectHideFlags: 0
